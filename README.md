@@ -1,19 +1,9 @@
-# Ruby Enumerable Module Partial Implementation
+# Tic-Tac-Toe
 
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg)](https://forthebadge.com)
 
-> In this project, we attempted to implement some of the more popular methods in the Ruby enumerables method. These are:
-- #my_each
-- #my_each_with_index
-- #my_select
-- #my_all?
-- #my_any?
-- #my_none?
-- #my_count
-- #my_map
-- #my_inject
-- #multiply_els for use with #my_inject
+> In this project, we attempted to implement a CLI version of the popular game tic-tac-toe in ruby
 
 ## Built With
 
