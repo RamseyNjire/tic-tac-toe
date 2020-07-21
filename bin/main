@@ -6,6 +6,7 @@
 # the board consists of a 3x3 grid ie with 9 cells
 # game starts with one player (could be random) entering their letter in any of the cells
 # The next player then enters their letter and the game continues in alternating fashion
+# rubocop: disable Layout/LineLength
 # Objective of the game is to fill in 3 cells in a row with your letter, that is horizontally, vertically, or diagonally.
 # A player can seek to fill in cells to win or to block the other player's move.
 # game ends in one of 2 scenarios: One player succeeds at filling 3 cells in a row or all cells are filled and no player wins, that is draw
@@ -49,6 +50,8 @@ board.each { |array| p array }
 
 # Computer prompts for each player to do their turn. In this example, we've only used one player for simplicity.
 # At each turn, the computer will check state of board and determine if there is an error, if one player has won, or if it is a draw.
+
+# rubocop: enable Layout/LineLength
 
 turns.times do
   puts "#{current_player[:name]}, please choose a cell between 1 and 9 to make your move: "
