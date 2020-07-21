@@ -1,66 +1,64 @@
 #!/usr/bin/env ruby
 
-#game is tic-tac-toe
-#consists of 2 players
-#each player chooses either 'X' or 'O'. We'll call these their letters
-#the board consists of a 3x3 grid ie with 9 cells
-#game starts with one player (could be random) entering their letter in any of the cells
-#The next player then enters their letter and the game continues in alternating fashion
-#Objective of the game is to fill in 3 cells in a row with your letter, that is horizontally, vertically, or diagonally.
-#A player can seek to fill in cells to win or to block the other player's move.
-#game ends in one of 2 scenarios: One player succeeds at filling 3 cells in a row or all cells are filled and no player wins, that is draw
+# game is tic-tac-toe
+# consists of 2 players
+# each player chooses either 'X' or 'O'. We'll call these their letters
+# the board consists of a 3x3 grid ie with 9 cells
+# game starts with one player (could be random) entering their letter in any of the cells
+# The next player then enters their letter and the game continues in alternating fashion
+# Objective of the game is to fill in 3 cells in a row with your letter, that is horizontally, vertically, or diagonally.
+# A player can seek to fill in cells to win or to block the other player's move.
+# game ends in one of 2 scenarios: One player succeeds at filling 3 cells in a row or all cells are filled and no player wins, that is draw
 
+# Here is the game flow
+# Computer displays game board and prompts player to pick a cell in which to enter their letter. Cells are numbered 1-9
+# Player 1 is 'X' by default, so computer can pick randomly who player 1 is.
+# Once player one chooses a cell, computer displays message saying what player 1 did and asks player 2 to make a move in the same fashion
+# At each iteration, the computer checks the state of the board to see if either player has won, if the board no longer has open cells
+# At each iteration, the computer could also display the board.
+# When game is over, computer displays 'game over' message, indicating who won, or indicating that game is a draw.
+# Also, computer should not allow players to enter letters in a cell that is already occupied. or enter a number that is not on board.
+# Computer assigns letters to players in a hash
 
-#Here is the game flow
-#Computer displays game board and prompts player to pick a cell in which to enter their letter. Cells are numbered 1-9
-#Player 1 is 'X' by default, so computer can pick randomly who player 1 is.
-#Once player one chooses a cell, computer displays message saying what player 1 did and asks player 2 to make a move in the same fashion
-#At each iteration, the computer checks the state of the board to see if either player has won, if the board no longer has open cells
-#At each iteration, the computer could also display the board.
-#When game is over, computer displays 'game over' message, indicating who won, or indicating that game is a draw.
-#Also, computer should not allow players to enter letters in a cell that is already occupied. or enter a number that is not on board.
-
-#Computer assigns letters to players in a hash
-player_1 = {:symbol => :X}
-player_2 = {:symbol => :O}
-current_player = player_1
+player_one = { symbol: :X }
+player_two = { symbol: :O }
+current_player = player_one
 turns = 4
-#Computer asks for player's names 
+# Computer asks for player's names
 
-puts "Enter first player name: "
+puts 'Enter first player name: '
 
-player_1 [:name] = gets.chomp.capitalize
+player_one [:name] = gets.chomp.capitalize
 
-puts "Welcome #{player_1[:name]} your symbol will be #{player_1[:symbol]}"
+puts "Welcome #{player_one[:name]}. Your symbol will be #{player_one[:symbol]}"
 
-puts "Enter second player name: "
-player_2 [:name] = gets.chomp.capitalize
+puts 'Enter second player name: '
+player_two [:name] = gets.chomp.capitalize
 
-puts "Welcome #{player_2[:name]} and your symbol will be #{player_2[:symbol]}"
+puts "Welcome #{player_two[:name]}. Your symbol will be #{player_two[:symbol]}"
 
-#Computer will display new state of game board (preferably visually)
-def render_board(board)
-  puts "#{board[0]} | #{board[1]} | #{board[2]}"
-  puts "---------"
-  puts "#{board[3]} | #{board[4]} | #{board[5]}"
-  puts "---------"
-  puts "#{board[6]} | #{board[7]} | #{board[8]}"
-end
+# Computer will display new state of game board (preferably visually)
 
-#Computer will display new state of game board (preferably visually).
-puts = "Tic-tac toe board"
-  board =[" "," "," "," "," "," "," "," "," "]
-  render_board(board)
- 
+board = [
+  ['', '', ''],
+  ['', '', ''],
+  ['', '', '']
+]
+
+board.each { |array| p array }
+
+# Computer prompts for each player to do their turn. In this example, we've only used one player for simplicity.
+# At each turn, the computer will check state of board and determine if there is an error, if one player has won, or if it is a draw.
 
 turns.times do
   puts "#{current_player[:name]}, please choose a cell between 1 and 9 to make your move: "
   move = gets.chomp.to_i
-  puts "Please enter a number between 1 and 9" unless 1 <= move && move <= 9 
-  puts "You have chosen cell #{move}." 
-
+  puts 'Please enter a number between 1 and 9' unless move <= 1 && move <= 9
+  puts "You have chosen cell #{move}."
 end
- #When player wins
+
+# When player wins
 puts "#{current_player[:name]} has won. The game is over"
 
-
+# when game ends in draw
+puts 'There are no more empty cells. The game has ended in a draw'
