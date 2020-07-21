@@ -20,46 +20,47 @@
 #When game is over, computer displays 'game over' message, indicating who won, or indicating that game is a draw.
 #Also, computer should not allow players to enter letters in a cell that is already occupied. or enter a number that is not on board.
 
-
-
+#Computer assigns letters to players in a hash
+player_1 = {:symbol => :X}
+player_2 = {:symbol => :O}
+current_player = player_1
+turns = 4
 #Computer asks for player's names 
+
 puts "Enter first player name: "
 
-player_1 = gets.chomp
+player_1 [:name] = gets.chomp.capitalize
+
+puts "Welcome #{player_1[:name]} your symbol will be #{player_1[:symbol]}"
 
 puts "Enter second player name: "
+player_2 [:name] = gets.chomp.capitalize
 
-player_2 = gets.chomp
-
-#Computer assigns letters to players in a hash
-
-players = {player_1: "X", player_2: "O"}
-
-
-puts "#{player_1} will be 'X' and #{player_2} will be 'O'"
-
-#Computer prompts first player to pick a cell to enter their letter.
-
-puts "#{player_1}, please choose a cell between 1 and 9 to enter your letter: "
-
-move = gets.chomp
-
-puts "You have chosen cell #{move}."
+puts "Welcome #{player_2[:name]} and your symbol will be #{player_2[:symbol]}"
 
 #Computer will display new state of game board (preferably visually)
+def render_board(board)
+  puts "#{board[0]} | #{board[1]} | #{board[2]}"
+  puts "---------"
+  puts "#{board[3]} | #{board[4]} | #{board[5]}"
+  puts "---------"
+  puts "#{board[6]} | #{board[7]} | #{board[8]}"
+end
 
-#Computer will internally check state of board. If win, if draw, if player specifies a cell number that isn't allowed, or if player tries to fill in occupied cell
+#Computer will display new state of game board (preferably visually).
+puts = "Tic-tac toe board"
+  board =[" "," "," "," "," "," "," "," "," "]
+  render_board(board)
+ 
 
-puts "#{player_2}, please choose a cell between 1 and 9 to enter your letter: "
+turns.times do
+  puts "#{current_player[:name]}, please choose a cell between 1 and 9 to make your move: "
+  move = gets.chomp.to_i
+  puts "Please enter a number between 1 and 9" unless 1 <= move && move <= 9 
+  puts "You have chosen cell #{move}." 
 
-move = gets.chomp
+end
+ #When player wins
+puts "#{current_player[:name]} has won. The game is over"
 
-puts "You have chosen cell #{move}."
 
-#When 1 player wins
-
-puts "#{player_1} has won. The game is over"
-
-#When it is a draw
-
-puts "There are no more empty cells. Game is over"
