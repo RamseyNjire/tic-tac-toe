@@ -2,53 +2,50 @@
 
 player_one = { symbol: :X }
 player_two = { symbol: :O }
-turns = 4
-# Computer asks for player's names
+current_player = player_one
+winner = false
 
-puts 'Enter first player name: '
-
-player_one [:name] = gets.chomp.capitalize
-
-puts "Welcome #{player_one[:name]}. Your symbol will be #{player_one[:symbol]}"
-
-puts 'Enter second player name: '
-player_two [:name] = gets.chomp.capitalize
-
-puts "Welcome #{player_two[:name]}. Your symbol will be #{player_two[:symbol]}"
-
-# Computer will display new state of game board (preferably visually)
-
-board = [
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', '']
-]
-
-board.each { |array| p array }
-
-# Computer prompts for each player to do their turn. In this example, we've only used one player for simplicity.
-# At each turn, the computer will check state of board and determine if there is an error, if one player has won, or if it is a draw.
-
-# rubocop: enable Layout/LineLength
-
-def win_or_draw
-  return rand(2)
+#here the board is displayed in a 3 x 3 grid
+def display_board
+  puts row = ["   " "|" "   " "|" "   "]
+  puts separator = "-----------"
+  puts row
+  puts separator
+  puts row
 end
 
+puts  "Enter the first player name: "
+player_one [:name]= gets.chomp.capitalize
 
+puts "Welcome #{player_one[:name]}. Your symbol is #{player_one [:symbol]}"
 
-turns.times do
-  if turns % 2 == 0
-    puts "#{player_one[:name]}, please choose a cell between 1 and 9 to make your move: "
-  else
-    puts "#{player_two[:name]}, please choose a cell between 1 and 9 to make your move: "
+puts "Enter the second player name: "
+player_two [:name]= gets.chomp.capitalize
+
+puts "Welcome #{player_two[:name]}. Your symbol is #{player_two [:symbol]}"
+
+loop do
+  puts "This is your board"
+  board = [" "," "," "," "," "," "," "," "," "]
+  puts display_board.to_i
+puts "Make your move #{current_player[:name]}"
+loop do
+  spot = gets.chomp.to_i
+  i = spot
+  if i < 1 || i > 9
+    puts "Please enter a number between 1 and 9"
+  elsif board != " "
+    puts "Updated field #{i-1} with #{current_player[:symbol]}"
+    else
+      puts "This field is taken already, choose another field"
+    end
+    next
+    current_player = player_two 
   end
-  move = gets.chomp.to_i
-  puts "You have chosen cell #{move}."
 end
-
-if win_or_draw == 1
-  puts "win or draw"
-else
-  puts "There are no more empty cells. The game has ended in a draw"
-end
+  if winner.nil?
+    puts "its a tie!!!"
+  else
+    puts "Player #{winner.true?} wins this round"
+  end
+  
