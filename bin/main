@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
 player_one = { symbol: :X }
 player_two = { symbol: :O }
