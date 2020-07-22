@@ -2,17 +2,14 @@
 
 player_one = { symbol: :X }
 player_two = { symbol: :O }
-current_player = player_one
-winner = false
 
-#here the board is displayed in a 3 x 3 grid
-def display_board
-  puts row = ["   " "|" "   " "|" "   "]
-  puts separator = "-----------"
-  puts row
-  puts separator
-  puts row
-end
+board = [
+  ["1", "2", "3"],
+  ["4", "5", "6"],
+  ["7", "8", "9"]
+]
+
+board_positions = {1 => [0, 0], 2 => [0, 1], 3 => [0, 2], 4 => [1, 0], 5 => [1, 1], 6 => [1, 2], 7 => [2, 0], 8 => [2,1], 9 => [2, 2]}
 
 puts  "Enter the first player name: "
 player_one [:name]= gets.chomp.capitalize
@@ -24,28 +21,81 @@ player_two [:name]= gets.chomp.capitalize
 
 puts "Welcome #{player_two[:name]}. Your symbol is #{player_two [:symbol]}"
 
-loop do
-  puts "This is your board"
-  board = [" "," "," "," "," "," "," "," "," "]
-  puts display_board.to_i
-puts "Make your move #{current_player[:name]}"
-loop do
-  spot = gets.chomp.to_i
-  i = spot
-  if i < 1 || i > 9
-    puts "Please enter a number between 1 and 9"
-  elsif board != " "
-    puts "Updated field #{i-1} with #{current_player[:symbol]}"
-    else
-      puts "This field is taken already, choose another field"
-    end
+def display(some_array)
+  some_array.each { |array| p array }
+end
+
+
+#Display the board and say 'here is the board'
+#Ask first player to choose a cell
+#take their input
+#check if it's any of the numbers 1 to 9
+#have an error message if not
+#if it is, convert to integer
+#check if relevant cell is empty
+#if not, display error message
+#if it is empty, update the cell
+#display message saying player has chosen the cell
+#display updated board
+#check game state
+#if game is won, display winning message
+#if game is drawn, display draw message
+#the state of the game will be chosen randomly. Which means for now, win or draw will be random
+#switch player
+#repeat above
+
+
+#we need a loop
+#game checks the number of turns if even or odd
+#if odd, first player plays
+#if even, second player plays
+#game keeps switching between players.
+#game breaks out of loop if game state indicates win or draw.
+#and also if all the squares are filled
+
+switch_player = true
+
+9.times do
+
+  if switch_player
+    current_player = player_one
+  else
+    current_player = player_two
+  end
+  #Display the board and say 'here is the board'
+
+  puts "Here is the tic-tac-toe board"
+  board.each { |array| p array }
+  
+  #Ask first player to choose a cell
+
+  puts "#{current_player[:name]}, please choose a cell"
+
+  cell = gets.chomp
+
+  puts "please choose a number between 1 and 9" unless cell.to_i >= 1 && cell.to_i <= 9
+
+  coordinates = board_positions.fetch(cell.to_i)
+
+  puts "That cell is not empty" unless board[coordinates[0]][coordinates[1]] == "#{cell}"
+
+  board[coordinates[0]][coordinates[1]] = current_player[:symbol].to_s
+
+  puts "#{current_player[:name]} has chosen cell #{cell}."
+
+  display(board)
+
+  switch_player = !switch_player
+  game_state = rand(0...3)
+  if game_state == 1
+    puts "the game ends with a win to #{current_player[:name]}"
+    break
+  elsif game_state == 2
+    puts "the game ends in a draw"
+    break
+  else
     next
-    current_player = player_two 
   end
 end
-  if winner.nil?
-    puts "its a tie!!!"
-  else
-    puts "Player #{winner.true?} wins this round"
-  end
-  
+
+puts "Game over!"
