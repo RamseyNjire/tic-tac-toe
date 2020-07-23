@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+require_relative '../lib/player.rb'
+require_relative '../lib/board.rb'
+
 player_one = { symbol: :X }
 player_two = { symbol: :O }
 
@@ -30,11 +33,6 @@ player_two [:name] = gets.chomp.capitalize
 
 puts "Welcome #{player_two[:name]}. Your symbol is #{player_two [:symbol]}"
 
-# display the board
-def display(some_array)
-  some_array.each { |array| p array }
-end
-
 switch_player = true
 
 9.times do
@@ -45,10 +43,12 @@ switch_player = true
                      player_two
                    end
   # Display the board and say 'here is the board'
-
+     # display the board
   puts 'Here is the tic-tac-toe board'
-  board.each { |array| p array }
-
+  new_board = Board.new(board, current_player)
+  puts new_board.display_board
+  puts ''              
+ 
   # Ask first player to choose a cell
 
   puts "#{current_player[:name]}, please choose a cell"
