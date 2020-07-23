@@ -57,3 +57,9 @@ This project is [MIT](lic.url) licensed.
 # When game is over, computer displays 'game over' message, indicating who won, or indicating that game is a draw.
 # Also, computer should not allow players to enter letters in a cell that is already occupied. or enter a number that is not on board.
 # Computer assigns letters to players in a hash
+
+# there is a game, a board, two players. The board further consists of cells.
+# So at the very least, we have a game class, to handle interactions, pass out messages when win or draw, take names of players, switch players, etc. 
+# we have a board class that keeps checking its state and whether it's a win or draw.
+# we have a player class that keeps making moves and has an assigned symbol i.e. 'X' or 'O'.
+# we have a cell class that keeps checking its own value and can also have that value set. 
