@@ -1,3 +1,98 @@
 #!/usr/bin/env ruby
 
-puts 'Hello world!'
+player_one = { symbol: :X }
+player_two = { symbol: :O }
+
+board = [
+  %w[1 2 3],
+  %w[4 5 6],
+  %w[7 8 9]
+]
+
+board_positions = { 1 => [0, 0],
+                    2 => [0, 1],
+                    3 => [0, 2],
+                    4 => [1, 0],
+                    5 => [1, 1],
+                    6 => [1, 2],
+                    7 => [2, 0],
+                    8 => [2, 1],
+                    9 => [2, 2] }
+
+# store player name and symbols
+puts 'Enter the first player name: '
+player_one [:name] = gets.chomp.capitalize
+
+puts "Welcome #{player_one[:name]}. Your symbol is #{player_one [:symbol]}"
+
+puts 'Enter the second player name: '
+player_two [:name] = gets.chomp.capitalize
+
+puts "Welcome #{player_two[:name]}. Your symbol is #{player_two [:symbol]}"
+
+# display the board
+def display(some_array)
+  some_array.each { |array| p array }
+end
+
+switch_player = true
+
+9.times do
+  # switch player
+  current_player = if switch_player
+                     player_one
+                   else
+                     player_two
+                   end
+  # Display the board and say 'here is the board'
+
+  puts 'Here is the tic-tac-toe board'
+  board.each { |array| p array }
+
+  # Ask first player to choose a cell
+
+  puts "#{current_player[:name]}, please choose a cell"
+
+  # take their input
+  cell = gets.chomp
+
+  # check if it's any of the numbers 1 to 9
+  puts 'please choose a number between 1 and 9' unless cell.to_i >= 1 && cell.to_i <= 9
+
+  # Convert to integer
+  coordinates = board_positions.fetch(cell.to_i)
+
+  # check if relevant cell is empty
+  # if not, display error message
+  # if it is empty, update the cell
+
+  puts 'That cell is not empty' unless board[coordinates[0]][coordinates[1]] == cell.to_s
+
+  board[coordinates[0]][coordinates[1]] = current_player[:symbol].to_s
+
+  # display message saying player has chosen the cell
+  puts "#{current_player[:name]} has chosen cell #{cell}."
+
+  # display updated board
+  display(board)
+
+  # game keeps switching between players.
+  switch_player = !switch_player
+
+  # check game state
+  # if game is won, display winning message
+  # if game is drawn, display draw message
+  # the state of the game will be chosen randomly. Which means for now, win or draw will be random
+  game_state = rand(0...3)
+  if game_state == 1
+    puts "the game ends with a win to #{current_player[:name]}"
+    break
+  elsif game_state == 2
+    puts 'the game ends in a draw'
+    break
+  else
+    next
+  end
+end
+
+puts 'Game over!'
