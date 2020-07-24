@@ -26,7 +26,7 @@ puts "Welcome, #{player_two_name}, you will play as 'O'."
 
 game = Game.new(player_one, player_two)
 puts "#{game.current_player.name} will begin the game"
-while true
+loop do
   game.board.display_board
   print "\n"
   loop do
