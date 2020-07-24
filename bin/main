@@ -40,7 +40,8 @@ loop do
       puts "That's not a number from 1 to 9"
     else
       break unless game.board.set_board_cell(a, b, game.current_player.symbol) == false
-        puts 'That cell is not empty'     
+
+      puts 'That cell is not empty'
     end
   end
   game.board.set_board_cell(a, b, game.current_player.symbol)
