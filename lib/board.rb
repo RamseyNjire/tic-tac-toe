@@ -1,5 +1,5 @@
-require_relative '../lib/grid_cell.rb'
-require_relative '../lib/array_extensions.rb'
+require_relative './grid_cell'
+require_relative './array_extensions'
 
 class Board
   attr_reader :board
@@ -11,19 +11,22 @@ class Board
     Array.new(3) { Array.new(3) { GridCell.new } }
   end
 
-  def get_board_cell(a, b)
-    board[a][b]
+  def get_board_cell(x_coordinate, y_coordinate)
+    board[x_coordinate][y_coordinate]
   end
 
-  def set_board_cell(a, b, value)
-    get_board_cell(a, b).value = value
+  def set_board_cell(x_coordinate, y_coordinate, value)
+    if get_board_cell(x_coordinate, y_coordinate).value.to_s.empty?
+      get_board_cell(x_coordinate, y_coordinate).value = value
+    else
+      false
+    end
   end
 
   def display_board
     displayed_board = []
     board.each do |array|
-      displayed_array = array.map { |array_cell| array_cell = array_cell.value }
-      displayed_board << displayed_array
+      displayed_board << array.map(&:value)
     end
     displayed_board.each { |array| p array }
   end
