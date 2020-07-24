@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-
 require_relative '../lib/grid_cell.rb'
 require_relative '../lib/player.rb'
 require_relative '../lib/array_extensions.rb'
@@ -36,7 +35,7 @@ loop do
     a, b = game.get_player_move(move)
     begin
       game.board.get_board_cell(a, b)
-    rescue StandardError
+    rescue TypeError
       puts "That's not a number from 1 to 9"
     else
       break unless game.board.set_board_cell(a, b, game.current_player.symbol) == false
