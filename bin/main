@@ -30,7 +30,7 @@ puts "#{game.current_player.name} will begin the game"
 loop do
   game.board.display_board
   print "\n"
-  while true
+  loop do
     puts game.ask_for_move
     move = gets.chomp.to_i
     a, b = game.get_player_move(move)
