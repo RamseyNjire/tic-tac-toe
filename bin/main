@@ -1,26 +1,26 @@
 #!/usr/bin/env ruby
-require_relative "../lib/grid_cell.rb"
-require_relative  "../lib/player.rb"
-require_relative "../lib/array_extensions.rb"
-require_relative "../lib/board.rb"
-require_relative "../lib/game.rb"
 
+require_relative '../lib/grid_cell.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/array_extensions.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/game.rb'
 
-puts "Welcome to the game."
+puts 'Welcome to the game.'
 
-puts "Player One, please type your name"
+puts 'Player One, please type your name'
 
 player_one_name = gets.chomp.capitalize
 
-player_one = Player.new({name: player_one_name, symbol: "X"})
+player_one = Player.new({ name: player_one_name, symbol: 'X' })
 
 puts "Welcome, #{player_one_name}, you will play as 'X'."
 
-puts  "Player Two, please type your name"
+puts 'Player Two, please type your name'
 
 player_two_name = gets.chomp
 
-player_two = Player.new({name: player_two_name, symbol: "O"})
+player_two = Player.new({ name: player_two_name, symbol: 'O' })
 
 puts "Welcome, #{player_two_name}, you will play as 'O'."
 

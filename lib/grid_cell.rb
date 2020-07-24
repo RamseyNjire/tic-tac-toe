@@ -1,6 +1,6 @@
 class GridCell
   attr_accessor :value
   def initialize
-    @value = ""
+    @value = ''
   end
 end

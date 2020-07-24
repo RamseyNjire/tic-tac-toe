@@ -1,15 +1,14 @@
 require_relative '../lib/grid_cell.rb'
 require_relative '../lib/array_extensions.rb'
 
-
 class Board
   attr_reader :board
   def initialize(input = {})
     @board = input.fetch(:board, basic_board)
   end
-  
+
   def basic_board
-    Array.new(3) { Array.new(3) {GridCell.new} }
+    Array.new(3) { Array.new(3) { GridCell.new } }
   end
 
   def get_board_cell(a, b)
@@ -32,17 +31,18 @@ class Board
   def end_game
     return :win if won?
     return :draw if drawn?
+
     false
   end
 
   def drawn?
-    board.flatten.map { |grid_cell| grid_cell.value }.no_cell_empty?
+    board.flatten.map(&:value).no_cell_empty?
   end
 
   def board_diagonals
     [
       [get_board_cell(0, 0), get_board_cell(1, 1), get_board_cell(2, 2)],
-      [get_board_cell(0, 2), get_board_cell(1, 1), get_board_cell(2, 0)]     
+      [get_board_cell(0, 2), get_board_cell(1, 1), get_board_cell(2, 0)]
     ]
   end
 
@@ -51,7 +51,7 @@ class Board
   end
 
   def winning_values(winning_config)
-    winning_config.map{ |grid_cell| grid_cell.value }
+    winning_config.map(&:value)
   end
 
   def won?
@@ -61,14 +61,4 @@ class Board
     end
     false
   end
-
-
-  
 end
-
-
-[
-  ["", "", ""],
-  ["", "", ""],
-  ["", "", ""]
-]

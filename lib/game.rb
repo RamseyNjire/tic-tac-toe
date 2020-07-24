@@ -18,7 +18,7 @@ class Game
   def ask_for_move
     "#{current_player.name}, please make your move by choosing a number from 1 to 9."
   end
-  
+
   def get_player_move(player_move = gets.chomp)
     board_position_mapping(player_move.to_i)
   end
@@ -26,9 +26,9 @@ class Game
   def end_game_message
     case board.end_game
     when :win
-      return "#{current_player.name} has won!"
+      "#{current_player.name} has won!"
     when :draw
-      return "The game has ended in a draw"
+      'The game has ended in a draw'
     end
   end
 
@@ -36,7 +36,7 @@ class Game
     puts "#{current_player.name} will begin the game"
     puts current_player.name
     puts second_player.name
-    while true
+    loop do
       board.display_board
       print "\n"
       puts ask_for_move
@@ -53,10 +53,9 @@ class Game
     end
   end
 
-    
   private
 
-  def board_position_mapping (player_move)
+  def board_position_mapping(player_move)
     board_positions = { 1 => [0, 0],
                         2 => [0, 1],
                         3 => [0, 2],
