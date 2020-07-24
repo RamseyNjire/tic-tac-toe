@@ -26,10 +26,10 @@ puts "Welcome, #{player_two_name}, you will play as 'O'."
 
 game = Game.new(player_one, player_two)
 puts "#{game.current_player.name} will begin the game"
-loop do
+while true
   game.board.display_board
   print "\n"
-  loop do
+  while true
     puts game.ask_for_move
     move = gets.chomp.to_i
     a, b = game.get_player_move(move)
