@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+
 require_relative '../lib/grid_cell.rb'
 require_relative '../lib/player.rb'
 require_relative '../lib/array_extensions.rb'
@@ -26,7 +27,7 @@ puts "Welcome, #{player_two_name}, you will play as 'O'."
 
 game = Game.new(player_one, player_two)
 puts "#{game.current_player.name} will begin the game"
-while true
+loop do
   game.board.display_board
   print "\n"
   while true
@@ -35,14 +36,11 @@ while true
     a, b = game.get_player_move(move)
     begin
       game.board.get_board_cell(a, b)
-    rescue
+    rescue StandardError
       puts "That's not a number from 1 to 9"
     else
-      if game.board.set_board_cell(a, b, game.current_player.symbol) == false
-        puts "That cell is not empty"
-      else
-        break
-      end
+      break unless game.board.set_board_cell(a, b, game.current_player.symbol) == false
+        puts 'That cell is not empty'     
     end
   end
   game.board.set_board_cell(a, b, game.current_player.symbol)
