@@ -38,12 +38,14 @@ loop do
     rescue TypeError
       puts "That's not a number from 1 to 9"
     else
-      break unless game.board.set_board_cell(a, b, game.current_player.symbol) == false
-
-      puts 'That cell is not empty'
+      if game.board.set_board_cell(a, b, game.current_player.symbol) == false
+        puts 'That cell is not empty'
+      else
+        game.board.set_board_cell(a, b, game.current_player.symbol)
+        break
+      end
     end
   end
-  game.board.set_board_cell(a, b, game.current_player.symbol)
   if game.board.end_game
     puts game.end_game_message
     game.board.display_board
