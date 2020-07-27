@@ -2,7 +2,7 @@ class GridCell
   attr_accessor :value
   @@count = 1
   def initialize
-    @value = @@count.to_s
+    @value = @@count
     @@count += 1
   end
 end

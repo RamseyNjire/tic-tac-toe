@@ -16,8 +16,7 @@ class Board
   end
 
   def set_board_cell(x_coordinate, y_coordinate, value)
-    if get_board_cell(x_coordinate, y_coordinate).value.to_s.empty?
-      puts "this part works"
+    if get_board_cell(x_coordinate, y_coordinate).value.to_i > 0
       get_board_cell(x_coordinate, y_coordinate).value = value
     else
       false
