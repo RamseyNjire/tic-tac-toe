@@ -5,4 +5,9 @@ class GridCell
     @value = @@count
     @@count += 1
   end
+
+  def count
+    @@count
+  end
+
 end
