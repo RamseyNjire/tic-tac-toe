@@ -17,6 +17,7 @@ class Board
 
   def set_board_cell(x_coordinate, y_coordinate, value)
     if get_board_cell(x_coordinate, y_coordinate).value.to_s.empty?
+      puts "this part works"
       get_board_cell(x_coordinate, y_coordinate).value = value
     else
       false
@@ -28,13 +29,12 @@ class Board
     board.each do |array|
       displayed_board << array.map(&:value)
     end
-    displayed_board.each { |array| p array }
+    displayed_board.each { |array| p array}
   end
 
   def end_game
     return :win if won?
     return :draw if drawn?
-
     false
   end
 
