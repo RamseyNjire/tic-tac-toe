@@ -17,28 +17,27 @@
 
 ## How to Play
 
- > This game consists of 2 players.
+  This game consists of 2 players.
 
- > Each player chooses either 'X' or 'O' as their form of identification.
+  Each player is assigned either 'X' or 'O' symbols as their form of identification.
 
  ![screenshot](./app1.png)
 
- > A board which consists of a 3x3 grid cell is displayed.
+  A board which consists of a 3x3 grid cell is displayed.
 
   ![screenshot](./app2.png)
   
- > The game starts with the first  player entering their letter in any of the cells from 1 to 9.
+  The game starts with the first  player entering their letter in any of the cells from 1 to 9.
 
- > The next player then enters their letter and the game continues in alternating fashion
+  The next player then enters their letter and the game continues in alternating fashion
 
  ![screenshot](./app3.png)
   
- > Objective of the game is to fill in 3 cells in a row with your letter, that is horizontally, vertically, or diagonally.
+  Objective of the game is to fill in 3 cells in a row with your letter, that is horizontally, vertically, or diagonally.
 
- > Game ends in one of 2 scenarios: One player succeeds at filling 3 cells in a row or all cells are filled and no player wins, that is draw
+  Game ends in one of 2 scenarios: One player succeeds at filling 3 cells in a row or all cells are filled and no player wins, that is draw
 
  ![screenshot](./app4.png)
-
 
 
 ## Getting Started
