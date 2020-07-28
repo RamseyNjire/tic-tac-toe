@@ -1,4 +1,5 @@
 # rubocop:disable Style/ClassVars
+
 class GridCell
   attr_accessor :value
   @@count = 1
