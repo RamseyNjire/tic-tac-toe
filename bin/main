@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/grid_cell.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/array_extensions.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/game.rb'
+
+puts 'Welcome to the game.'
+
+puts 'Player One, please type your name'
+
+player_one_name = gets.chomp.capitalize
+
+player_one = Player.new({ name: player_one_name, symbol: 'X' })
+
+puts "Welcome, #{player_one_name}, you will play as 'X'."
+
+puts 'Player Two, please type your name'
+
+player_two_name = gets.chomp.capitalize
+
+player_two = Player.new({ name: player_two_name, symbol: 'O' })
+
+puts "Welcome, #{player_two_name}, you will play as 'O'."
+
+game = Game.new(player_one, player_two)
+puts "#{game.current_player.name} will begin the game"
+loop do
+  game.board.display_board
+  print "\n"
+  loop do
+    puts game.ask_for_move
+    move = gets.chomp.to_i
+    a, b = game.get_player_move(move)
+    begin
+      game.board.get_board_cell(a, b)
+    rescue TypeError
+      puts "That's not a number from 1 to 9"
+    else
+      if game.board.set_board_cell(a, b, game.current_player.symbol) == false
+        puts 'That cell is not empty'
+      else
+        game.board.set_board_cell(a, b, game.current_player.symbol)
+        break
+      end
+    end
+  end
+  if game.board.end_game
+    puts game.end_game_message
+    game.board.display_board
+    return
+  else
+    game.switch_player
+  end
+end
