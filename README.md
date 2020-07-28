@@ -56,11 +56,11 @@ To get a local copy up and running follow these simple example steps.
 
  - Run the main file by  navigating to whatever directory you cloned the repo into and typing the following in your command line:
 
-     ` cd tic-tac-toe `
+     ` cd tic-tac-toe/bin `
 
-     ` bin/main `
+     ` ruby main `
 
-An interesting thing to note here is that, since the main file is an executable, you should be able to run it, even if you're not in the tic-tac-toe folder. All you have to do is type the command `main` on the command line and the game should run. However, seeing as different environments can be unpredictable, if that doesn't work then the above steps are the surest to get the game running.
+An interesting thing to note here is that, since the main file is an executable, you should be able to run it, even if you're not in the tic-tac-toe folder. All you have to do is type the command `main` on the command line and the game should run, even without using the `ruby` prefix. However, seeing as different environments can be unpredictable, if that doesn't work then the above steps are the surest to get the game running.
  
 
 ## Validators
