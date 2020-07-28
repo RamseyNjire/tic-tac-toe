@@ -1,10 +1,10 @@
 class Array
   def all_cells_empty?
-    all? { |element| element.to_i > 0 }
+    all? { |element| element.to_i.positive? }
   end
 
   def any_cell_empty?
-    any? { |element| element.to_i > 0 }
+    any? { |element| element.to_i.positive? }
   end
 
   def no_cell_empty?
