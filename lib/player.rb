@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Player
   attr_reader :symbol, :name
   def initialize(player_details)

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class Array
   def all_cells_empty?

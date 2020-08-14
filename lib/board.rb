@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+
 
 require_relative './grid_cell'
 require_relative './array_extensions'
