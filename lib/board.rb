@@ -1,5 +1,3 @@
-
-
 require_relative './grid_cell'
 require_relative './array_extensions'
 

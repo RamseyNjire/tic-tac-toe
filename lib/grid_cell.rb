@@ -1,5 +1,3 @@
-
-
 # rubocop:disable Style/ClassVars
 
 class GridCell
