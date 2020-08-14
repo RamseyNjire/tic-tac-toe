@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative '../lib/grid_cell.rb'
 require_relative '../lib/player.rb'
 require_relative '../lib/array_extensions.rb'
