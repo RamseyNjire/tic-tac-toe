@@ -59,40 +59,87 @@ describe Array do
   array_1 = [1, 2, 3, 4, 5]
   array_2 = [0, 0, 0]
   array_3 = [1,0 ,0, 0]
-  context 'All cells empty' do
-    it 'Should return true if all cells are empty' do
+  context 'all cells empty' do
+    it 'should return true if all values are positive' do
       expect(array_1.all_cells_empty?).to be(true)
     end
-    it 'Should return false if not all cells are empty' do
+    it 'should return false if not all values are positive' do
       expect(array_2.all_cells_empty?).to be(false)
     end
 
   end
 
   context 'any cell empty' do
-    it 'returns true if any cell is empty' do
+    it 'returns true if any value is positive' do
       expect(array_3.any_cell_empty?).to be(true)
     end
-    it 'returns false if any cell is empty' do
+    it 'returns false if no value is positive' do
       expect(array_2.any_cell_empty?).to be(false)
     end
   end
 
   context 'no cell empty' do
-    it 'returns true if no cell is empty' do
+    it 'returns true if no value is positive' do
       expect(array_2.no_cell_empty?).to be(true)
     end
-    it 'returns false if no cell is empty' do
+    it 'returns false if any value is positive' do
       expect(array_3.no_cell_empty?).to be(false)
     end
   end
 
   context 'all cells same' do
-    it 'returns true if all cells are the same' do
+    it 'returns true if all values are the same' do
       expect(array_2.all_cells_same?).to be(true)
     end
-    it 'returns false if all cells are not the same' do
+    it 'returns false if not all values are the same' do
       expect(array_3.all_cells_same?).to be(false)
+    end
+  end
+end
+
+describe Game do
+  let(:board) {Board.new}
+  let(:player_one) {Player.new({name: "Joe", symbol: "X"})}
+  let(:player_two) {Player.new({name: "Jane", symbol: "O"})}
+  let(:game) {Game.new(player_one, player_two, board)}
+  it "has two player attributes and one board attribute" do
+    expect(game).to have_attributes(:current_player => player_one, :second_player => player_two, :board => board)
+  end
+
+  context "switch players" do
+    it "switches the current player from player_one to player_two and vice versa" do
+      game.switch_player
+      expect(game.current_player).to be(player_two)
+    end
+  end
+
+  context "ask for move" do
+    it "should call the name method of the current player" do
+      expect(player_one).to receive(:name)
+      game.ask_for_move
+    end
+  end
+
+  context "get player move" do
+    it "should raise an error if no argument is or too many arguments are given" do
+      expect{game.get_player_move}.to raise_error(ArgumentError)
+      expect{game.get_player_move(1,2)}.to raise_error(ArgumentError)
+    end
+    it "should returns nil if the argument is not an integer in the range 1 to 9" do
+      expect(game.get_player_move(10)).to be(nil)
+    end
+    it "should return an array if the argument is an integer in the range 1 to 9" do
+      expect(game.get_player_move(5)).to be_a(Array)
+    end
+  end
+
+  context "end game message" do
+    it "should call the name method of the current player" do
+      game.board.set_board_cell(0,0,"X")
+      game.board.set_board_cell(0,1,"X")
+      game.board.set_board_cell(0,2,"X")
+      expect(player_one).to receive(:name)
+      game.end_game_message
     end
   end
 end
