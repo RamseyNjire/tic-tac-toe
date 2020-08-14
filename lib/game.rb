@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './player'
 require_relative './array_extensions'
 require_relative './board'
@@ -5,7 +7,10 @@ require_relative './board'
 class Game
   attr_reader :board, :current_player, :second_player
   def initialize(player_one, player_two, board = Board.new)
-    return "Only objects accepted here" if !(player_one.is_a?(Player) && player_two.is_a?(Player) && board.is_a?(Board))
+    unless player_one.is_a?(Player) && player_two.is_a?(Player) && board.is_a?(Board)
+      return 'Only objects accepted here'
+    end
+
     @board = board
     @current_player = player_one
     @second_player = player_two
