@@ -7,10 +7,6 @@ require_relative './board'
 class Game
   attr_reader :board, :current_player, :second_player
   def initialize(player_one, player_two, board = Board.new)
-    unless player_one.is_a?(Player) && player_two.is_a?(Player) && board.is_a?(Board)
-      return 'Only objects accepted here'
-    end
-
     @board = board
     @current_player = player_one
     @second_player = player_two

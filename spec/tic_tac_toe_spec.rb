@@ -57,42 +57,42 @@ describe Board do
 end
 
 describe Array do
-  array_1 = [1, 2, 3, 4, 5]
-  array_2 = [0, 0, 0]
-  array_3 = [1, 0, 0, 0]
+  array1 = [1, 2, 3, 4, 5]
+  array2 = [0, 0, 0]
+  array3 = [1, 0, 0, 0]
   context 'all cells empty' do
     it 'should return true if all values are positive' do
-      expect(array_1.all_cells_empty?).to be(true)
+      expect(array1.all_cells_empty?).to be(true)
     end
     it 'should return false if not all values are positive' do
-      expect(array_2.all_cells_empty?).to be(false)
+      expect(array2.all_cells_empty?).to be(false)
     end
   end
 
   context 'any cell empty' do
     it 'returns true if any value is positive' do
-      expect(array_3.any_cell_empty?).to be(true)
+      expect(array3.any_cell_empty?).to be(true)
     end
     it 'returns false if no value is positive' do
-      expect(array_2.any_cell_empty?).to be(false)
+      expect(array2.any_cell_empty?).to be(false)
     end
   end
 
   context 'no cell empty' do
     it 'returns true if no value is positive' do
-      expect(array_2.no_cell_empty?).to be(true)
+      expect(array2.no_cell_empty?).to be(true)
     end
     it 'returns false if any value is positive' do
-      expect(array_3.no_cell_empty?).to be(false)
+      expect(array3.no_cell_empty?).to be(false)
     end
   end
 
   context 'all cells same' do
     it 'returns true if all values are the same' do
-      expect(array_2.all_cells_same?).to be(true)
+      expect(array2.all_cells_same?).to be(true)
     end
     it 'returns false if not all values are the same' do
-      expect(array_3.all_cells_same?).to be(false)
+      expect(array3.all_cells_same?).to be(false)
     end
   end
 end
