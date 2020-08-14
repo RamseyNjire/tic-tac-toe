@@ -55,5 +55,47 @@ describe Board do
   end
 end
 
+describe Array do
+  array_1 = [1, 2, 3, 4, 5]
+  array_2 = [0, 0, 0]
+  array_3 = [1,0 ,0, 0]
+  context 'All cells empty' do
+    it 'Should return true if all cells are empty' do
+      expect(array_1.all_cells_empty?).to be(true)
+    end
+    it 'Should return false if not all cells are empty' do
+      expect(array_2.all_cells_empty?).to be(false)
+    end
+
+  end
+
+  context 'any cell empty' do
+    it 'returns true if any cell is empty' do
+      expect(array_3.any_cell_empty?).to be(true)
+    end
+    it 'returns false if any cell is empty' do
+      expect(array_2.any_cell_empty?).to be(false)
+    end
+  end
+
+  context 'no cell empty' do
+    it 'returns true if no cell is empty' do
+      expect(array_2.no_cell_empty?).to be(true)
+    end
+    it 'returns false if no cell is empty' do
+      expect(array_3.no_cell_empty?).to be(false)
+    end
+  end
+
+  context 'all cells same' do
+    it 'returns true if all cells are the same' do
+      expect(array_2.all_cells_same?).to be(true)
+    end
+    it 'returns false if all cells are not the same' do
+      expect(array_3.all_cells_same?).to be(false)
+    end
+  end
+end
+
 
 
