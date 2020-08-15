@@ -53,3 +53,5 @@ Style/HashTransformValues:
   Enabled: false
 Link/ScriptPermission:
   Enabled: false
+Style/ClassVars:
+  Enabled: false

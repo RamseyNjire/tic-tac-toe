@@ -1,5 +1,3 @@
-# rubocop:disable Style/ClassVars
-
 class GridCell
   attr_accessor :value
   @@count = 1
@@ -8,5 +6,3 @@ class GridCell
     @@count += 1
   end
 end
-
-# rubocop: enable Style/ClassVars
